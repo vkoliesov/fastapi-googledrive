@@ -10,7 +10,8 @@ from services.google_drive import (
     download_file_from_drive,
     create_folder_on_drive,
     delete_file_or_folder_from_drive,
-    moving_file_or_folder
+    moving_file_or_folder,
+    files_list
 )
 
 
@@ -22,7 +23,15 @@ templates = Jinja2Templates(directory="templates")
 @router.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Main page with forms for work with Google Drive."""
-    return templates.TemplateResponse("index.html", {"request": request})
+    logging.info("Main page!")
+    files = files_list()
+    return templates.TemplateResponse(
+        "index.html",
+        {
+            "request": request,
+            "files": files
+        }
+    )
 
 
 @router.post("/upload/")

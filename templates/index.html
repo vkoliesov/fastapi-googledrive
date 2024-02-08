@@ -39,5 +39,19 @@
         <input type="text" name="new_parent_id" placeholder="Enter new parent ID">
         <button type="submit">Move</button>
     </form>
+
+    <h2>List of Files</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+        </tr>
+        {% for file in files %}
+        <tr>
+            <td>{{ file.name }}</td>
+            <td>{{ file.id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

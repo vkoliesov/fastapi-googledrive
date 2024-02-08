@@ -54,3 +54,16 @@ def moving_file_or_folder(file_name, new_parent_id):
         file_list[0].SetContentFile({'id': new_parent_id})
         file_list[0].Upload(param={'supportsTeamDrives': True})
 
+# Get files list from the Google Drive
+def files_list():
+    try:
+        file_list = drive.ListFile(
+            {'q': "'root' in parents and trashed=false"}
+        ).GetList()
+        files_info = [
+            {"name": file['title'], "id": file['id']} for file in file_list
+        ]
+        return files_info
+    except Exception as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    
