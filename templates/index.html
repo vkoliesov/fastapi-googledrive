@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Operations with Google Drive</title>
+</head>
+<body>
+    <h1>File Operations with Google Drive</h1>
+    
+    <h2>Upload File</h2>
+    <form action="/upload/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Download File</h2>
+    <form action="/download/" method="get">
+        <input type="text" name="file_name" placeholder="Enter file name">
+        <button type="submit">Download</button>
+    </form>
+
+    <h2>Create Folder</h2>
+    <form action="/create_folder/" method="post">
+        <input type="text" name="folder_name" placeholder="Enter folder name">
+        <button type="submit">Create Folder</button>
+    </form>
+
+    <h2>Delete File or Folder</h2>
+    <form action="/delete/" method="post">
+        <input type="text" name="file_name" placeholder="Enter file/folder name">
+        <button type="submit">Delete</button>
+    </form>
+
+    <h2>Move File or Folder</h2>
+    <form action="/move/" method="post">
+        <input type="text" name="file_name" placeholder="Enter file/folder name">
+        <input type="text" name="new_parent_id" placeholder="Enter new parent ID">
+        <button type="submit">Move</button>
+    </form>
+</body>
+</html>
